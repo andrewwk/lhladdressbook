@@ -1,14 +1,12 @@
-const pg = require('knex')({
-  client: 'pg',
-  connection: process.env.PG_CONNECTION_STRING,
-  searchPath: 'knex,public'
-});
-
+//require env file
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const db  = require('./db');
+const port = process.env.port;
 
-const port = 4000;
+//instead of using knex to seed, force the seed by running the insertion manually each time the server is launched.
+require('../db/seeds/sample_users')(db);
 
 app.listen(port);
 console.log("Listening on port", port);

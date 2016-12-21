@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
       table.string("city");
       table.string("province");
       table.string("country");
-      table.string("postal code");
+      table.string("postal_code");
     })
   ])
 };

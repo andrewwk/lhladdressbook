@@ -1,16 +1,25 @@
 {
   "name": "address-book",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lighthouse Labs Address Book Project",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewwwk/lhladdressbook.git"
+  },
   "dependencies": {
+    "async": "^2.1.4",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "knex": "^0.12.6",
+    "knex-logger": "^0.1.0",
     "pg": "^6.1.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/index.js",
+    "restart": "node ./server/index.js"
   },
   "author": "Andrew Kim",
   "license": "ISC"
