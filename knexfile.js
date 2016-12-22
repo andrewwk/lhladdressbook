@@ -4,7 +4,7 @@ require("dotenv").config();
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.host,
       user: process.env.user,
@@ -14,11 +14,11 @@ module.exports = {
       ssl: process.env.ssl
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'migrations'
+      directory: "./db/migrations",
+      tableName: "migrations"
     },
     seeds: {
-      directory: './db/seeds'
+      directory: "./db/seeds"
     }
   }
 };

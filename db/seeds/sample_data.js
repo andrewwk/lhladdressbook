@@ -16,25 +16,25 @@ module.exports = (knex) => {
             email: "Dark-Knight@gotham.com",
             phone_number: "555-555-1234"
           //return necessary to read user_id's
-          }).returning('user_id'),
+          }).returning("user_id"),
           knex("users").insert({
             first_name: "Tony",
             last_name: "Stark",
             email: "IAmIronman@stark.com",
             phone_number: "555-555-6969"
-          }).returning('user_id'),
+          }).returning("user_id"),
           knex("users").insert({
             first_name: "Clark",
             last_name: "Kent",
             email: "kal-el@krypton.world",
             phone_number: "555-123-4567"
-          }).returning('user_id'),
+          }).returning("user_id"),
           knex("users").insert({
             first_name: "Steve",
             last_name: "Rogers",
             email: "cap@murica.best",
             phone_number: "555-555-5555"
-          }).returning('user_id')
+          }).returning("user_id")
         ])
         .then(users => {
           return users.map(user => user[0])
