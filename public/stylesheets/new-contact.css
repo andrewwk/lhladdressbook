@@ -1,0 +1,16 @@
+fieldset {
+  margin-top: 5%;
+  background-color: black:
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.new-contact-form {
+    padding: 20px;
+    margin-top: 25px;
+    background-color: mediumaquamarine;
+    border-radius: 25px;
+}

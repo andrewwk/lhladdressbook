@@ -1,0 +1,37 @@
+#bs-example-navbar-collapse-1 {
+  background-color: #3498db;
+  padding: 0 20PX 0 20px;
+}
+
+#navbar-container-fluid {
+  background-color: #3498db;
+}
+
+.navbar-default .navbar-text {
+    color: white;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: #3498db;
+}
+
+.dropdown-menu > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  color: white;
+  background-color: #3498db;
+}
+
+
+/*.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+background-color: #3498db;
+}*/

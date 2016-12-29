@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Fucking Addressbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Custom external stylesheet for new contact form -->
+    <link rel="stylesheet" href="/stylesheets/new-contact.css">
+    <!-- Latest minified Jquery -->
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+  <!-- navigation bar -->
+  <% include ./partials/_navbar %>
+
+  <!-- form container -->
+  <div class="row container-fluid" style="margin-top: 5%;">
+    <div class="col-md-6 col-centered">
+    <form class="form-horizontal new-contact-form" action="/contacts/new" method="post">
+    <fieldset>
+    <legend>Contact Information</legend>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="first_name">First Name</label>
+        <div class="col-md-10">
+        <input type="text" name="first_name" placeholder="first name" class="form-control input-md">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="last_name">Last Name</label>
+        <div class="col-md-10">
+          <input type="text" name="last_name" placeholder="last name" class="form-control input-md">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="email">Email</label>
+        <div class="col-md-10">
+          <input type="email" name="email" placeholder="email"class="form-control input-md">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="phone_number">Phone Number</label>
+        <div class="col-md-10">
+          <input type="tel" name="phone_number" placeholder="xxx-xxx-xxxx" class="form-control input-md">
+        </div>
+      </div>
+
+        <!-- Form Name -->
+        <legend>Address Details</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="address">Address</label>
+          <div class="col-md-10">
+            <input type="text" name="address" placeholder="Address Line" class="form-control">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="city">City</label>
+          <div class="col-md-10">
+            <input type="text" name="city" placeholder="City" class="form-control">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="province">Province</label>
+          <div class="col-md-4">
+            <input type="text" name="province" placeholder="Province" class="form-control">
+          </div>
+
+          <label class="col-md-2 control-label" for="postal_code">Postal Code</label>
+          <div class="col-md-4">
+            <input type="text" name="postal_code" placeholder="Postal Code" class="form-control">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="country">Country</label>
+          <div class="col-md-10">
+            <input type="text" name="country" placeholder="Country" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <div class="pull-right">
+              <button type="submit" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+
+    </fieldset>
+    </form>
+    </div>
+  </div>
+  </body>
