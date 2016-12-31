@@ -48,6 +48,8 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
             <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
           </blockquote>
+
+          <!-- List of all contacts -->
           <h2>My Friends</h2>
             <% locals.users.forEach(function(user) { %>
               <address>
@@ -62,6 +64,12 @@
                 <strong><%= user.first_name %> <%= user.last_name %></strong><br>
                 <a href="mailto:#"><%= user.email %></a>
               </address>
+              <form action="/contacts/<%= user.user_id %>/edit" method="get">
+                <button type="submit" name="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-pencil"><strong>Edit</strong></span></button>
+              </form>
+              <form action="/contacts/<%= user.user_id %>/delete" method="post">
+                <button type="submit" name="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><strong>Delete</strong></span></button>
+              </form>
             <% }) %>
         </div>
       </div>

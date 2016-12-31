@@ -52,7 +52,6 @@ app.post("/query_result", (req, res) => {
       const locals = {
         info: result
       };
-      console.log("blah", locals);
       res.render("query_result", locals);
     })
     .catch((err) => {
@@ -70,7 +69,7 @@ app.post("/contacts/new", (req, res) => {
   const province     = req.body.province
   const postal_code  = req.body.postal_code
   const country      = req.body.country
-  
+
   async.waterfall([
     function(callback) {
       return knex("users")
@@ -94,11 +93,57 @@ app.post("/contacts/new", (req, res) => {
       res.redirect("/");
     }
   });
-
 });
 //add a new contact page
 app.get("/contacts/new", (req, res) => {
   res.render("new");
+});
+
+app.get("/contacts/:id/edit", (req, res) => {
+  const contact_id = req.params.id
+  knex("users")
+    .join("addresses", "users.user_id", "=", "addresses.user_id")
+    .where("user_id", contact_id)
+    .select()
+    .then((result) => {
+      const locals = {
+        info: result
+      };
+      console.log("blah", locals);
+      res.render("edit", locals);
+    })
+    .catch((err) => {
+      console.log("That mofo couldn't be found for editting", err)
+    })
+})
+//delete contact
+app.post("/contacts/:id/delete", (req, res) => {
+  const contact_id = req.params.id
+
+  async.waterfall([
+    function(callback) {
+      return knex("users")
+        .where("user_id", contact_id)
+        .del()
+        .then(response => callback(null, response))
+        .catch(callback)
+    },
+    function(data, callback) {
+      return knex ("addresses")
+        .where("user_id", contact_id)
+        .del()
+        .then(response => callback(null, "done"))
+        .catch(callback)
+    },
+  ], (err, result) => {
+    if(err){
+      return console.log("Couldn't delete that mofo. Failed to waterfall you fool!", err);
+    } else {
+      console.log("Successfull removal of that mofo.");
+      res.response
+      res.redirect("/");
+    }
+  });
 });
 
 //must be at end of code
