@@ -10,7 +10,7 @@ const bodyParser = require("body-parser")
 const knexConfig = require("../knexfile.js")[env.environment];
 const knex       = require("knex")(knexConfig);
 const knexLogger = require("knex-logger");
-const async = require("async")
+const async      = require("async")
 const port       = 4000;
 //require knex file to seed database on server start
 require("../db/seeds/sample_data")(knex);
@@ -98,12 +98,13 @@ app.post("/contacts/new", (req, res) => {
 app.get("/contacts/new", (req, res) => {
   res.render("new");
 });
-
+//edit contact page
 app.get("/contacts/:id/edit", (req, res) => {
   const contact_id = req.params.id
+
   knex("users")
     .join("addresses", "users.user_id", "=", "addresses.user_id")
-    .where("user_id", contact_id)
+    .where("users.user_id", contact_id)
     .select()
     .then((result) => {
       const locals = {
@@ -116,6 +117,46 @@ app.get("/contacts/:id/edit", (req, res) => {
       console.log("That mofo couldn't be found for editting", err)
     })
 })
+//update contact in addressbook
+app.post("/contacts/:id/update", (req, res) => {
+  const contact_id   = req.params.id
+  const first_name   = req.body.first_name
+  const last_name    = req.body.last_name
+  const email        = req.body.email
+  const phone_number = req.body.phone_number
+  const address      = req.body.address
+  const city         = req.body.city
+  const province     = req.body.province
+  const postal_code  = req.body.postal_code
+  const country      = req.body.country
+
+  async.waterfall([
+    function(callback) {
+      return knex("users")
+        .returning("user_id")
+        .where("user_id", contact_id)
+        .update({first_name: first_name, last_name: last_name, email: email, phone_number: phone_number})
+        .then(response => callback(null, response))
+        .catch(callback)
+    },
+    function(data, callback) {
+      const user_id = data[0]
+      return knex ("addresses")
+        .where("user_id", user_id)
+        .insert({address: address, city: city, province: province, postal_code: postal_code, country: country})
+        .then(response => callback(null, "done"))
+        .catch(callback)
+    },
+  ], (err, result) => {
+    if(err){
+      return console.log("Mofo couldn't be update. Failed to waterfall you fool!", err);
+    } else {
+      console.log("Successfully updatad that mofo's info!");
+      res.send("Successfully updatad that mofo's info!")
+      res.redirect("/");
+    }
+  });
+});
 //delete contact
 app.post("/contacts/:id/delete", (req, res) => {
   const contact_id = req.params.id
@@ -140,7 +181,6 @@ app.post("/contacts/:id/delete", (req, res) => {
       return console.log("Couldn't delete that mofo. Failed to waterfall you fool!", err);
     } else {
       console.log("Successfull removal of that mofo.");
-      res.response
       res.redirect("/");
     }
   });
