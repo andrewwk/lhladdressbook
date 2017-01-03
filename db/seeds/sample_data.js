@@ -6,7 +6,7 @@ module.exports = (knex) => {
   //function to add users
   const addUsers = (callback) => {
     // Deletes ALL existing entries
-    return knex("users").del()
+    return knex("users")
       .then(() => {
         return Promise.all([
           // Inserts seed entries
