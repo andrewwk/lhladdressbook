@@ -17,14 +17,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!-- navigation bar -->
     <% include ./partials/_navbar %>
-    <div class="container-fluid" style="margin-top: 5%;">
+    <!-- contact search bar -->
+    <% include ./partials/_searchbar %>
+
+
+    <div class="container" style="margin-top: 5%;">
       <div class="jumbotron">
         <blockquote>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
           <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
         </blockquote>
-        <h2>result</h2>
+        <h2>Result</h2>
         <% if (locals.info.length < 1) { %>
           <h2>That mofo does not exist</h2>
         <% } else { %>

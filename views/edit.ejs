@@ -19,8 +19,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!-- navigation bar -->
     <% include ./partials/_navbar %>
-    <div class="container-fluid" style="margin-top: 5%;">
+    <!-- contact search bar -->
+    <% include ./partials/_searchbar %>
+
+    <div class="container" style="margin-top: 5%;">
       <div class="jumbotron">
         <!-- <h2>Is this the mofo you're looking for?</h2> -->
         <% if (locals.info.length < 1) { %>
@@ -45,7 +49,7 @@
       </div>
     </div>
     <% locals.info.forEach(function(person) { %>
-    <div class="row container-fluid" style="margin-top: 5%;">
+    <div class="row container-fluid">
       <div class="col-md-6 col-centered">
       <form class="form-horizontal new-contact-form" action="/contacts/<%= person.user_id %>/update" method="post">
       <fieldset>

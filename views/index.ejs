@@ -20,57 +20,42 @@
 
     </head>
     <body>
+      <!-- navigation bar -->
       <% include ./partials/_navbar %>
-      <div class="container-fluid" style="margin-top: 5%;">
-        <div class="col-md-6 col-md-offset-3">
-          <!-- Search Form -->
-          <form role="form" action="/query_result" method="post">
-          <!-- Search Field -->
-            <div class="row">
-              <h1 class="text-center">Look Some Mofo Up</h1>
-              <div class="form-group">
-                <div class="input-group">
-                  <input class="form-control" type="text" name="find_contact" placeholder="Search By First or Last Name" required/>
-                  <span class="input-group-btn">
-                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
-                  </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </form>
-            <!-- End of Search Form -->
-        </div>
-      </div>
+      <!-- contact search bar -->
+      <% include ./partials/_searchbar %>
       <div class="container">
         <div class="jumbotron">
-          <blockquote>
+          <!-- <blockquote>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
             <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-          </blockquote>
+          </blockquote> -->
 
           <!-- List of all contacts -->
           <h2>My Friends</h2>
-            <% locals.users.forEach(function(user) { %>
+          <% locals.users.forEach(function(user) { %>
               <address>
                 <strong><%= user.first_name %> <%= user.last_name %></strong><br>
                 <%= user.address %><br>
                 <%= user.city %>, <%= user.province %>, <%= user.postal_code %> <br>
                 <%= user.country %> <br>
-                <abbr title="Phone">P:</abbr> <%= user.phone_number %>
+                <abbr title="Phone">Phone Number:</abbr> <%= user.phone_number %>
               </address>
 
               <address>
-                <strong><%= user.first_name %> <%= user.last_name %></strong><br>
+                <strong><%= user.first_name %> <%= user.last_name %> Email</strong><br>
                 <a href="mailto:#"><%= user.email %></a>
               </address>
-              <form action="/contacts/<%= user.user_id %>/edit" method="get">
+              <form action="/contacts/<%= user.user_id %>/edit" method="get" style="display: inline;">
                 <button type="submit" name="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-pencil"><strong>Edit</strong></span></button>
               </form>
-              <form action="/contacts/<%= user.user_id %>/delete" method="post">
+              <form action="/contacts/<%= user.user_id %>/delete" method="post" style="display: inline;">
                 <button type="submit" name="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><strong>Delete</strong></span></button>
               </form>
+              <br>
+              <br>
             <% }) %>
+
         </div>
       </div>
     </body>

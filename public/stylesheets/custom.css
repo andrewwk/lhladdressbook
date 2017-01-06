@@ -1,3 +1,7 @@
 .delete {
   display: none;
 }
+
+.jumbotron {
+  border-radius: 25px;
+}
