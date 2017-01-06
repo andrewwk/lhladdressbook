@@ -1,0 +1,69 @@
+<!-- Custom external stylesheet -->
+<link rel="stylesheet" href="/stylesheets/searchbar.css">
+
+<div class="container-fluid" style="margin-top: 5%;">
+  <div class="col-md-6 col-md-offset-3">
+    <!-- Search Form -->
+    <form role="form" action="/query_result" method="post">
+    <!-- Search Field -->
+      <div class="row">
+        <h1 class="text-center">Look Some Mofo Up</h1>
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" type="text" name="find_contact" placeholder="Search By First or Last Name" required/>
+            <span class="input-group-btn">
+              <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+            </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+      <!-- End of Search Form -->
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Look Some Mofo Up</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <form action="/query_result" method="post" class="search-form">
+                <div class="form-group has-feedback">
+            		<label for="search" class="sr-only">Search</label>
+            		<input type="text" class="form-control" name="find_contact" id="search" placeholder="Search By First or Last Name">
+              		<span class="glyphicon glyphicon-search form-control-feedback"></span>
+            	</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div id="filter-panel" class="collapse filter-panel">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" type="text" name="find_contact" placeholder="Search By First or Last Name" required/>
+                  <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                    </span>
+                  </span>
+              </div>
+            </div><!-- form group [search] -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+        <span class="glyphicon glyphicon-cog"></span>Search
+    </button>
+	</div>
+</div>
